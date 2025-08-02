@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stem Downloader</title>
+</head>
+<body>
+  <h1>Enter YouTube URL</h1>
+  <form method="post">
+    <input type="text" name="url" placeholder="https://www.youtube.com/watch?v=..." size="50" required>
+    <button type="submit">Download & Separate</button>
+  </form>
+  {% if stems %}
+    <h2>Download Stems:</h2>
+    <ul>
+      {% for path in stems %}
+        <li><a href="{{ url_for('download_file', filename=path.split('/',1)[1]) }}">{{ path.split('/',1)[1] }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
